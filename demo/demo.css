@@ -1,0 +1,15 @@
+body {
+	font-family: arial, sans-serif;
+	font-size: 13px;
+	color: #345;
+}
+.box {
+	margin: 10px;
+	border: 1px dashed #345;
+	padding: 5px;
+	width: 300px;
+	float: left;
+}
+.buttons {
+	clear: both;
+}

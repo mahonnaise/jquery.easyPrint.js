@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jquery.easyPrint.js</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" href="demo.css"/>
+	</head>
+	<body>
+		<div class="box" id="box1">
+			<h1>box 1</h1>
+			<p>box 1 box 1 box 1 box 1</p>
+		</div>
+		<div class="box" id="box2">
+			<h1>box 2</h1>
+			<p>box 2 box 2 box 2 box 2</p>
+		</div>
+		<div class="box combo">
+			<h1>box 4a</h1>
+			<p>box 4a</p>
+		</div>
+		<div class="box combo">
+			<h1>box 4b</h1>
+			<p>box 4b</p>
+		</div>
+
+		<div class="buttons">
+			<button type="button" class="x-print" data-print-selector="#box1" data-print-title="box one">print box 1 contents</button>
+			<button type="button" class="x-print" data-print-selector="#box2" data-print-title="box two">print box 2 contents</button>
+			<button type="button" class="x-print" data-print-selector=".combo" data-print-title="box 4a and 4b">print box 4a + 4b contents</button>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="../jquery.easyPrint.js"></script>
+		<script>
+		$(document).ready(function ($) {
+			$(document).on('click', '.x-print', function() {
+				var $el = $(this),
+					selector = $el.data('print-selector'),
+					title = $el.data('print-title');
+
+				$(selector).easyPrint(title);
+			});
+		});
+		</script>
+	</body>
+</html>
