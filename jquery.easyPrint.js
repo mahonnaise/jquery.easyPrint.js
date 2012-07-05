@@ -5,8 +5,11 @@
 
 (function ($) {
 	'use strict';
+
+	var iframe;
+
 	$.fn.easyPrint = function (title) {
-		var iframe, contentWindow, doc, that = this, html;
+		var contentWindow, doc, that = this, html;
 
 		html = '<!DOCTYPE html><html><head>';
 
@@ -30,13 +33,13 @@
 		}());
 
 		html += '</head><body>';
-		
+
 		this.each(function () {
 			html += $(this).html();
 		});
-		
+
 		html += '</body></html>';
-		
+
 		if ($.browser.opera) {
 			contentWindow = window.open(
 				'data:,',
@@ -44,19 +47,21 @@
 				'menubar=false,width=640,height=480'
 			);
 		} else {
-			iframe = $('<iframe tabindex=-1/>');
-			// The iframe must be visible for IE. visibility:hidden can't be used.
-			iframe.css({
-				position: 'absolute',
-				height: 1,
-				top: -10
-			});
-			$(document.body).append(iframe);
+			if (!iframe) {
+				iframe = $('<iframe/>');
+				// The iframe must be visible for IE. visibility:hidden can't be used.
+				iframe.css({
+					position: 'absolute',
+					height: 1,
+					top: -10
+				});
+				$(document.body).append(iframe);
+			}
 
 			contentWindow = iframe[0].contentWindow;
 		}
 		doc = contentWindow.document;
-		
+
 		doc.open();
 		doc.write(html);
 		doc.close();
