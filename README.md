@@ -12,7 +12,7 @@ Stylesheets are automatically used if they were included like this:
 
 <code>$(<var>selector</var>).easyPrint(&lt;<var>title</var>&gt;);</code>
 
-* `selector` &ndash; a jQuery [selector](http://api.jquery.com/category/selectors/)`
+* `selector` &ndash; a jQuery [selector](http://api.jquery.com/category/selectors/)
 * `title` &ndash; the document title (optional)
 
 #Compatibility
